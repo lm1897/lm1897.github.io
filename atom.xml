@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2020-11-05T04:33:25.207Z</updated>
+  <updated>2020-11-05T06:54:54.558Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://example.com/2020/11/04/lgmz/"/>
     <id>http://example.com/2020/11/04/lgmz/</id>
     <published>2020-11-03T16:00:00.000Z</published>
-    <updated>2020-11-05T04:33:25.207Z</updated>
+    <updated>2020-11-05T06:54:54.558Z</updated>
     
     
       
@@ -85,7 +85,7 @@
     <link href="http://example.com/2020/04/26/solution%20to%20P6477/"/>
     <id>http://example.com/2020/04/26/solution%20to%20P6477/</id>
     <published>2020-04-25T16:00:00.000Z</published>
-    <updated>2020-11-05T04:29:28.848Z</updated>
+    <updated>2020-11-05T06:38:44.013Z</updated>
     
     
     <summary type="html">&lt;p&gt;（小声bb：考场上没写出来，太菜了&lt;/p&gt;
@@ -105,7 +105,7 @@
     <link href="http://example.com/2020/04/26/the%20solution%20to%20P6186/"/>
     <id>http://example.com/2020/04/26/the%20solution%20to%20P6186/</id>
     <published>2020-04-25T16:00:00.000Z</published>
-    <updated>2020-11-05T04:29:36.056Z</updated>
+    <updated>2020-11-05T06:38:50.934Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;一点想法&quot;&gt;&lt;a href=&quot;#一点想法&quot; class=&quot;headerlink&quot; title=&quot;一点想法&quot;&gt;&lt;/a&gt;一点想法&lt;/h1&gt;&lt;p&gt;实际上看了题解大家都知道了，是用树状数组，但是个人认为自己的树状数组做法比较简洁一点（可能?）这里跟大家分享一下&lt;/p&gt;</summary>

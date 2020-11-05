@@ -56,8 +56,7 @@
     \oint_{\partial \Omega}{\boldsymbol{E}\cdot \text{d}\ell}=-\frac{\text{d}\varPhi _B}{\text{d}t}\\
     \oint_{\partial \Sigma}{\boldsymbol{B}\cdot \text{d}\ell}=\mu _0I+\mu _0\varepsilon _0\frac{\text{d}\varPhi _E}{\text{d}t}\\
 \end{array} \right.</script><script type="math/tex; mode=display">
-x=\pi =3.14159\lim_{\Delta x\rightarrow 0} \lim_{x\rightarrow a} \boldsymbol{\tau }\dot{x}\vec{e}\boldsymbol{\vec{e}}</script><p>$\oiiint$</p>
-]]></content>
+x=\pi =3.14159\lim_{\Delta x\rightarrow 0} \lim_{x\rightarrow a} \boldsymbol{\tau }\dot{x}\vec{e}\boldsymbol{\vec{e}}</script>]]></content>
       <tags>
         <tag>乱搞</tag>
       </tags>
