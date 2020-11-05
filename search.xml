@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>网络流学习笔记</title>
-    <url>/2020/11/04/netflow%20note/</url>
+    <url>/posts/32882/</url>
     <content><![CDATA[<p>（语言风格和讲述内容可能只有自己猜看的懂，如果是要学习算法就去看其它大佬的博客吧</p>
 <h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h1><blockquote>
 <p>网络流是在图论中解决一类对于边权有限制问题的算法<br>但是主要的难题是建模<br><del>大部分情况下就是你建完边之后直接贴板子就行了</del><br><a id="more"></a></p>
@@ -41,7 +41,7 @@
   </entry>
   <entry>
     <title>lgmz</title>
-    <url>/2020/11/04/lgmz/</url>
+    <url>/posts/64513/</url>
     <content><![CDATA[<script type="math/tex; mode=display">
 \left\{ \begin{array}{l}
     \nabla \cdot \boldsymbol{E}=\frac{\rho}{\varepsilon _0}\\
@@ -63,7 +63,7 @@ x=\pi =3.14159\lim_{\Delta x\rightarrow 0} \lim_{x\rightarrow a} \boldsymbol{\ta
   </entry>
   <entry>
     <title>Hello World</title>
-    <url>/2020/07/05/hello-world/</url>
+    <url>/posts/16107/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <a id="more"></a>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
@@ -81,7 +81,7 @@ x=\pi =3.14159\lim_{\Delta x\rightarrow 0} \lim_{x\rightarrow a} \boldsymbol{\ta
   </entry>
   <entry>
     <title>P6477序列题解</title>
-    <url>/2020/04/26/solution%20to%20P6477/</url>
+    <url>/posts/26190/</url>
     <content><![CDATA[<p>（小声bb：考场上没写出来，太菜了</p>
 <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p><del>直觉</del><strong>告诉</strong>我们，看到这个$n&lt;=1e6$还有2s的时限，应该就是$O(nlogn)$的复杂度没错了，但是我们要怎么整出这个复杂度<br><a id="more"></a><br>看一下要求的东西：<script type="math/tex">\sum_{i=1}^{n}\sum_{j=i}^{n}(f(i,j))^2</script><br>拆开，考虑对于每个$i$单独求解$\sum_{j=i}^{n}(f(i,j))^2$,然后我们还要整出一个$log$，看一下相邻两个关于i的值能不能$log$转移</p>
 <p>$i-1$会对$i$造成什么影响？如果一个区间$[i,j]$<strong>至少</strong>有一个和$a[i-1]$相同的数那么$f(i,j)=f(i-1,j)$，否则等于后者减1</p>
@@ -100,7 +100,7 @@ x=\pi =3.14159\lim_{\Delta x\rightarrow 0} \lim_{x\rightarrow a} \boldsymbol{\ta
   </entry>
   <entry>
     <title>P6186冒泡排序题解</title>
-    <url>/2020/04/26/the%20solution%20to%20P6186/</url>
+    <url>/posts/30397/</url>
     <content><![CDATA[<h1 id="一点想法"><a href="#一点想法" class="headerlink" title="一点想法"></a>一点想法</h1><p>实际上看了题解大家都知道了，是用树状数组，但是个人认为自己的树状数组做法比较简洁一点（可能?）这里跟大家分享一下</p>
 <a id="more"></a>
 <p>我们设$now$为当前的全局逆序对数，$a[i]$为下标为$i$的值，$pre[i]$为在$i$之前的，比$a[i]$大的数的个数</p>
