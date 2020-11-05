@@ -660,6 +660,9 @@ pre .javascript .function {
   flex-grow: 1;
   list-style-type: none;
   border-radius: 0 0 0 0;
+  transition-delay: 0s;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
 }
 @media (max-width: 413px) {
   .post-body .tabs ul.nav-tabs li.tab,
@@ -1334,7 +1337,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #59ffc8;
+  background: #22ff08;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1667,6 +1670,16 @@ pre .javascript .function {
 }
 .back-to-top.back-to-top-on:hover {
   opacity: 0.8;
+}
+.reading-progress-bar {
+  background: #37c6c0;
+  display: block;
+  height: 3px;
+  left: 0;
+  position: fixed;
+  width: 0;
+  z-index: 1500;
+  top: 0;
 }
 .post-body {
   font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
@@ -2450,6 +2463,25 @@ ul.breadcrumb li + li:last-child {
 .search-popup #no-result {
   color: #ccc;
   margin: auto;
+}
+.popular-posts-header {
+  border-bottom: 1px solid #eee;
+  display: block;
+  font-size: 1.125em;
+  margin-bottom: 10px;
+  margin-top: 60px;
+}
+.popular-posts {
+  padding: 0;
+}
+.popular-posts .popular-posts-item {
+  margin-left: 2em;
+}
+.popular-posts .popular-posts-item .popular-posts-title {
+  font-size: 0.875em;
+  font-weight: normal;
+  line-height: 2.4;
+  margin: 0;
 }
 mjx-container[jax="CHTML"][display="true"],
 .has-jax {
