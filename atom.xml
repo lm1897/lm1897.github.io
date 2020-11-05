@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2020-11-04T23:14:43.517Z</updated>
+  <updated>2020-11-05T04:33:25.207Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,14 +21,17 @@
     <link href="http://example.com/2020/11/04/lgmz/"/>
     <id>http://example.com/2020/11/04/lgmz/</id>
     <published>2020-11-03T16:00:00.000Z</published>
-    <updated>2020-11-04T23:14:43.517Z</updated>
+    <updated>2020-11-05T04:33:25.207Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;$$&lt;br&gt;\left{ \begin{array}{l}&lt;br&gt;    \nabla \cdot \boldsymbol{E}=\frac{\rho}{\varepsilon &lt;em&gt;0}\&lt;br&gt;    \nabla \times</summary>
+    <summary type="html">&lt;script type=&quot;math/tex; mode=display&quot;&gt;
+\left\{ \begin{array}{l}
+    \nabla \cdot \boldsymbol{E}=\frac{\rho}{\varepsilon _0}\\
+    \nabla</summary>
         
       
     
@@ -83,11 +86,11 @@
     <link href="http://example.com/2020/04/26/solution%20to%20P6477/"/>
     <id>http://example.com/2020/04/26/solution%20to%20P6477/</id>
     <published>2020-04-25T16:00:00.000Z</published>
-    <updated>2020-11-05T03:35:09.837Z</updated>
+    <updated>2020-11-05T04:29:28.848Z</updated>
     
     
     <summary type="html">&lt;p&gt;（小声bb：考场上没写出来，太菜了&lt;/p&gt;
-&lt;h1 id=&quot;正文&quot;&gt;&lt;a href=&quot;#正文&quot; class=&quot;headerlink&quot; title=&quot;正文&quot;&gt;&lt;/a&gt;正文&lt;/h1&gt;&lt;p&gt;&lt;del&gt;直觉&lt;/del&gt;&lt;strong&gt;告诉&lt;/strong&gt;我们，看到这个$n&amp;lt;=1e6$还有2s的时限，应该就是$O(nlogn)$的复杂度没错了，但是我们要怎么整出这个复杂度&lt;/p&gt;</summary>
+&lt;h1 id=&quot;正文&quot;&gt;&lt;a href=&quot;#正文&quot; class=&quot;headerlink&quot; title=&quot;正文&quot;&gt;&lt;/a&gt;正文&lt;/h1&gt;&lt;p&gt;&lt;del&gt;直觉&lt;/del&gt;&lt;strong&gt;告诉&lt;/strong&gt;我们，看到这个$n&amp;lt;=1e6$还有2s的时限，应该就是$O(nlogn)$的复杂度没错了，但是我们要怎么整出这个复杂度&lt;br&gt;</summary>
     
     
     
@@ -103,7 +106,7 @@
     <link href="http://example.com/2020/04/26/the%20solution%20to%20P6186/"/>
     <id>http://example.com/2020/04/26/the%20solution%20to%20P6186/</id>
     <published>2020-04-25T16:00:00.000Z</published>
-    <updated>2020-11-05T03:34:01.083Z</updated>
+    <updated>2020-11-05T04:29:36.056Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;一点想法&quot;&gt;&lt;a href=&quot;#一点想法&quot; class=&quot;headerlink&quot; title=&quot;一点想法&quot;&gt;&lt;/a&gt;一点想法&lt;/h1&gt;&lt;p&gt;实际上看了题解大家都知道了，是用树状数组，但是个人认为自己的树状数组做法比较简洁一点（可能?）这里跟大家分享一下&lt;/p&gt;</summary>

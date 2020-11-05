@@ -45,7 +45,21 @@
   <entry>
     <title>lgmz</title>
     <url>/2020/11/04/lgmz/</url>
-    <content><![CDATA[<p>$$<br>\left{ \begin{array}{l}<br>    \nabla \cdot \boldsymbol{E}=\frac{\rho}{\varepsilon <em>0}\<br>    \nabla \times \boldsymbol{E}=-\frac{\partial \boldsymbol{B}}{\partial t}\<br>    \nabla \cdot \boldsymbol{B}=0\<br>    c^2\nabla \times \boldsymbol{B}=\frac{\boldsymbol{j}}{\varepsilon <em>0}+\frac{\partial \boldsymbol{E}}{\partial t}c^2\<br>\end{array} \right.<br>\<br>\left{ \begin{array}{l}<br>    \oiint</em>{\partial \Omega}{\boldsymbol{E}\cdot \text{d}s}=\frac{Q}{\varepsilon <em>0}\<br>    \oiint</em>{\partial \Omega}{\boldsymbol{B}\cdot \text{d}s}=0\<br>    \oint</em>{\partial \Omega}{\boldsymbol{E}\cdot \text{d}\ell}=-\frac{\text{d}\varPhi <em>B}{\text{d}t}\<br>    \oint</em>{\partial \Sigma}{\boldsymbol{B}\cdot \text{d}\ell}=\mu <em>0I+\mu <em>0\varepsilon _0\frac{\text{d}\varPhi _E}{\text{d}t}\<br>\end{array} \right.<br>\<br>x=\pi =3.14159\lim</em>{\Delta x\rightarrow 0} \lim</em>{x\rightarrow a} \boldsymbol{\tau }\dot{x}\vec{e}\boldsymbol{\vec{e}}<br>$$</p>
+    <content><![CDATA[<script type="math/tex; mode=display">
+\left\{ \begin{array}{l}
+    \nabla \cdot \boldsymbol{E}=\frac{\rho}{\varepsilon _0}\\
+    \nabla \times \boldsymbol{E}=-\frac{\partial \boldsymbol{B}}{\partial t}\\
+    \nabla \cdot \boldsymbol{B}=0\\
+    c^2\nabla \times \boldsymbol{B}=\frac{\boldsymbol{j}}{\varepsilon _0}+\frac{\partial \boldsymbol{E}}{\partial t}c^2\\
+\end{array} \right.</script><hr>
+<script type="math/tex; mode=display">
+\left\{ \begin{array}{l}
+    \iint_{\partial \Omega}{\boldsymbol{E}\cdot \text{d}s}=\frac{Q}{\varepsilon _0}\\
+    \iint_{\partial \Omega}{\boldsymbol{B}\cdot \text{d}s}=0\\
+    \oint_{\partial \Omega}{\boldsymbol{E}\cdot \text{d}\ell}=-\frac{\text{d}\varPhi _B}{\text{d}t}\\
+    \oint_{\partial \Sigma}{\boldsymbol{B}\cdot \text{d}\ell}=\mu _0I+\mu _0\varepsilon _0\frac{\text{d}\varPhi _E}{\text{d}t}\\
+\end{array} \right.</script><script type="math/tex; mode=display">
+x=\pi =3.14159\lim_{\Delta x\rightarrow 0} \lim_{x\rightarrow a} \boldsymbol{\tau }\dot{x}\vec{e}\boldsymbol{\vec{e}}</script><p>$\oiiint$</p>
 ]]></content>
       <tags>
         <tag>乱搞</tag>
@@ -78,11 +92,10 @@
     <title>P6477序列题解</title>
     <url>/2020/04/26/solution%20to%20P6477/</url>
     <content><![CDATA[<p>（小声bb：考场上没写出来，太菜了</p>
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p><del>直觉</del><strong>告诉</strong>我们，看到这个$n&lt;=1e6$还有2s的时限，应该就是$O(nlogn)$的复杂度没错了，但是我们要怎么整出这个复杂度</p>
-<a id="more"></a>
-<p>看一下要求的东西：$$\sum_{i=1}^{n}\sum_{j=i}^{n}(f(i,j))^2$$<br>拆开，考虑对于每个$i$单独求解$\sum_{j=i}^{n}(f(i,j))^2$,然后我们还要整出一个$log$，看一下相邻两个关于i的值能不能$log$转移</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p><del>直觉</del><strong>告诉</strong>我们，看到这个$n&lt;=1e6$还有2s的时限，应该就是$O(nlogn)$的复杂度没错了，但是我们要怎么整出这个复杂度<br><a id="more"></a><br>看一下要求的东西：<script type="math/tex">\sum_{i=1}^{n}\sum_{j=i}^{n}(f(i,j))^2</script><br>拆开，考虑对于每个$i$单独求解$\sum_{j=i}^{n}(f(i,j))^2$,然后我们还要整出一个$log$，看一下相邻两个关于i的值能不能$log$转移</p>
 <p>$i-1$会对$i$造成什么影响？如果一个区间$[i,j]$<strong>至少</strong>有一个和$a[i-1]$相同的数那么$f(i,j)=f(i-1,j)$，否则等于后者减1</p>
-<p>我们还可以发现，如果区间$[i,j]$<strong>至少</strong>含有，那么区间$[i,j+1]$一定也<strong>至少</strong>含有一个和$a[i-1]$相同的数<br>那么我们可以做一个预处理，对于每个位置，在后面找到和这个位置值相同的最靠前的位置，设为$nxt[i]$，那么$i-1,i$的两个求和，有差别的部分就在<br>$$\sum_{j=i-1}^{nxt[i-1]-1}(f(i-1.j)^2),\sum_{j=i}^{nxt[i-1]-1}(f(i,j)^2)=\sum_{j=i}^{nxt[i-1]-1}((f(i-1.j)-1)^2)$$<br>两部分的差值是什么！！？前者比后者大$2\sum_{j=i-1}^{nxt[i-1]-1}f(i-1,j)-(nxt[i-1]-j+1)$<del>比较显然</del>实际上只要计算一下就可以算出来这个式子了</p>
+<p>我们还可以发现，如果区间$[i,j]$<strong>至少</strong>含有，那么区间$[i,j+1]$一定也<strong>至少</strong>含有一个和$a[i-1]$相同的数<br>那么我们可以做一个预处理，对于每个位置，在后面找到和这个位置值相同的最靠前的位置，设为$nxt[i]$，那么$i-1,i$的两个求和，有差别的部分就在</p>
+<script type="math/tex; mode=display">\sum_{j=i-1}^{nxt[i-1]-1}(f(i-1.j)^2),\sum_{j=i}^{nxt[i-1]-1}(f(i,j)^2)=\sum_{j=i}^{nxt[i-1]-1}((f(i-1.j)-1)^2)</script><p>两部分的差值是什么！！？前者比后者大$2\sum_{j=i-1}^{nxt[i-1]-1}f(i-1,j)-(nxt[i-1]-j+1)$<del>比较显然</del>实际上只要计算一下就可以算出来这个式子了</p>
 <p>做完之后，区间$[i-1,nxt[i-1]-1]$的值都要扣1，现在该分析的都分析完了。可以发现树状数组\线段树是维护这个序列，当然了我们一开始要先计算出$f(1,1…n)$的值，然后建树。</p>
 <p><del>我有点口胡说的不是很清楚</del><br>大概就这样吧如果有人看的到的话就看代码帮助理解吧<br><del>虽然代码也没有注释</del></p>
 <h1 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h1><p>常数有点大，算是卡过去的，原本是想写树状数组的，但是看卡过去了就不想写了<del>懒</del></p>
@@ -99,10 +112,11 @@
     <url>/2020/04/26/the%20solution%20to%20P6186/</url>
     <content><![CDATA[<h1 id="一点想法"><a href="#一点想法" class="headerlink" title="一点想法"></a>一点想法</h1><p>实际上看了题解大家都知道了，是用树状数组，但是个人认为自己的树状数组做法比较简洁一点（可能?）这里跟大家分享一下</p>
 <a id="more"></a>
-
 <p>我们设$now$为当前的全局逆序对数，$a[i]$为下标为$i$的值，$pre[i]$为在$i$之前的，比$a[i]$大的数的个数</p>
 <p>我们考虑两个操作干了什么</p>
-<h2 id="操作1-交换s"><a href="#操作1-交换s" class="headerlink" title="操作1 交换s"></a>操作1 交换s</h2><p>不妨设下标为$i,i+1$的两个数交换，那么$a[i]$交换肯定不用说。考虑两个数的大小关系（交换之前）：<br>$$a[i]&gt;a[i+1]$$那么$pre[i+1]-=1$再交换，且$now-=1$。<br>$$a[i]&lt;a[i+1]$$那么$pre[i]+=1$再交换，且$now+=1$。因为是排列，所以不用考虑等号。</p>
+<h2 id="操作1-交换s"><a href="#操作1-交换s" class="headerlink" title="操作1 交换s"></a>操作1 交换s</h2><p>不妨设下标为$i,i+1$的两个数交换，那么$a[i]$交换肯定不用说。考虑两个数的大小关系（交换之前）：</p>
+<p><script type="math/tex">a[i]>a[i+1]</script>那么$pre[i+1]-=1$再交换，且$now-=1$。</p>
+<p><script type="math/tex">a[i]<a[i+1]</script>那么$pre[i]+=1$再交换，且$now+=1$。因为是排列，所以不用考虑等号。</p>
 <h2 id="操作2-求值"><a href="#操作2-求值" class="headerlink" title="操作2 求值"></a>操作2 求值</h2><p>通过手动模拟我们可以发现，总是一个局部最大值一直往后移动，移到第一个比它大的数前面，然后以此类推。然后我们还可以发现这些数的$pre$值保持不变，其他数的值为正减掉1。</p>
 <p>所以每轮冒泡排序之后，$pre$为正则扣1，为0则不变</p>
 <p>我们考虑把$pre$放到树状数组$f$里面，对于每个$pre$，$f[1…pre]$都加1，然后我们想一想求到$k$的前缀和，得到的答案就是$k$轮冒泡排序之后减少的逆序对数，题目要求当前有多少，那么用$now$扣掉减少的就是答案</p>
