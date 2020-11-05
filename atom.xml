@@ -52,8 +52,7 @@
     
     <summary type="html">&lt;p&gt;（语言风格和讲述内容可能只有自己猜看的懂，如果是要学习算法就去看其它大佬的博客吧&lt;/p&gt;
 &lt;h1 id=&quot;1-概述&quot;&gt;&lt;a href=&quot;#1-概述&quot; class=&quot;headerlink&quot; title=&quot;1.概述&quot;&gt;&lt;/a&gt;1.概述&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;网络流是在图论中解决一类对于边权有限制问题的算法&lt;br&gt;但是主要的难题是建模&lt;br&gt;&lt;del&gt;大部分情况下就是你建完边之后直接贴板子就行了&lt;/del&gt;&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
+&lt;p&gt;网络流是在图论中解决一类对于边权有限制问题的算法&lt;br&gt;但是主要的难题是建模&lt;br&gt;&lt;del&gt;大部分情况下就是你建完边之后直接贴板子就行了&lt;/del&gt;&lt;br&gt;</summary>
     
     
     
