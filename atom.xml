@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2020-11-05T13:05:11.866Z</updated>
+  <updated>2020-11-14T15:11:42.216Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>P4630[APIO2018]铁人两项题解</title>
+    <link href="http://example.com/posts/31207/"/>
+    <id>http://example.com/posts/31207/</id>
+    <published>2020-11-13T16:00:00.000Z</published>
+    <updated>2020-11-14T15:11:42.216Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;算是圆方树的板子题&quot;&gt;&lt;a href=&quot;#算是圆方树的板子题&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="oi相关" scheme="http://example.com/categories/oi%E7%9B%B8%E5%85%B3/"/>
+    
+    
+    <category term="题解" scheme="http://example.com/tags/%E9%A2%98%E8%A7%A3/"/>
+    
+  </entry>
   
   <entry>
     <title>lgmz</title>
@@ -85,7 +110,7 @@
     <link href="http://example.com/posts/26190/"/>
     <id>http://example.com/posts/26190/</id>
     <published>2020-04-25T16:00:00.000Z</published>
-    <updated>2020-11-05T06:38:44.013Z</updated>
+    <updated>2020-11-14T15:10:33.080Z</updated>
     
     
     <summary type="html">&lt;p&gt;（小声bb：考场上没写出来，太菜了&lt;/p&gt;

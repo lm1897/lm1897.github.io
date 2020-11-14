@@ -522,6 +522,112 @@ x=\pi =3.14159\lim_{\Delta x\rightarrow 0} \lim_{x\rightarrow a} \boldsymbol{\ta
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/31207/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://pic.downk.cc/item/5fa370c91cd1bbb86b49d9b4.jpg">
+      <meta itemprop="name" content="samnever/流沫hwn">
+      <meta itemprop="description" content="blog built by hwn">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="归尘">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/31207/" class="post-title-link" itemprop="url">P4630[APIO2018]铁人两项题解</a>
+        </h2>
+
+        <div class="post-meta">
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-11-14 00:00:00 / 修改时间：23:11:42" itemprop="dateCreated datePublished" datetime="2020-11-14T00:00:00+08:00">2020-11-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/oi%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">oi相关</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="算是圆方树的板子题"><a href="#算是圆方树的板子题" class="headerlink" title="算是圆方树的板子题"></a>算是圆方树的板子题</h1><p>总的来说就是圆方树+树上打标记+对于每个节点枚举贡献，后面二者是很常见的技巧，实际上这道题也没有那么难处理</p>
+<hr>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>经过分析我们很直接的可以知道与点双连通分量有关，因为对于选定的两个起点,中转点可以选择(除了两个端点之外)两个端点所在的bcc和路径上的bcc的所有点。否则如果选择了之外的点必然会有一些点要走两次。很自然的我们想到了求割点/建圆方树.<br>那么我们现在要做的就是，对于任意不相同的两点(根据题意要考虑两点的先后顺序)求出两点之间有多少符合条件的中继点，这时候应该就会觉得求割点没什么用了，转而去考虑圆方树上怎么搞事情。<br>在圆方树上，两个圆点之间是交替的方点和圆点(割点)。考虑打标记，每个方点的val是对应bcc的点数，每个圆点的val是-1，那么对于任意两点，他们在树上所形成的的路径(包括两点本身)所有点的val值之和即可行的中转点个数。<br>端点不能当中继点，割点被重复计算，这些点都应该被扣去，而在计算中他们的val都是-1已经扣去，那么就证明了这种标记方法的正确性</p>
+<hr>
+<p>可是我们总不可能$n^2$去枚举每个点对吧，这样会爆。那么我们转而去考虑每个点会有多少条路径会经过它，每个点的val值乘上路径数就是这个点对答案的贡献。这时候就可以通过$O(n)$的树形$dp$进行计算</p>
+<h3 id="对于方点"><a href="#对于方点" class="headerlink" title="对于方点"></a>对于方点</h3><p>本身方点不会作为起点，所以初始化的时候siz为0<br>（只有圆点可能作为起点，所以初始化的时候圆点siz为1）<br>每次搜完一个子节点v,答案加上$2<em>siz</em>siz[v]$,然后$siz+=siz[v]$，最后答案再加上$2<em>siz</em>(该连通块圆点数-siz)$就可以统计出经过这个方点的路径条数</p>
+<h3 id="对于圆点"><a href="#对于圆点" class="headerlink" title="对于圆点"></a>对于圆点</h3><p>操作与方点是相同的，但是初始化的时候siz为1.我们可以发现我们不仅把经过这个圆点的路径统计了，还把以这个圆点为起点终点的路径统计了，最终答案是正确的</p>
+<h1 id="几个坑点"><a href="#几个坑点" class="headerlink" title="几个坑点"></a>几个坑点</h1><ol>
+<li>开ll</li>
+<li>图不一定是连通图，所以要记录每个连通块圆点数，详见代码</li>
+<li>每次找到一个没有dfn的点，最后都要把它退栈，因为在建圆方树的过程中它是root不会被退栈（这点应该在学习圆方树的时候就有提到了</li>
+</ol>
+<hr>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>具体实现的时候加了一点小小的优化<br><del>理论上来说应该会快一点</del></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;numeric&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;functional&gt;</span></span></span><br><span class="line"><span class="comment">//#define int ll</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fs(i,x,y) for(int i=(x);i&lt;=(y);++i)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fn(i,x,y) for(int i=(x);i&gt;=(y);--i)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Li inline </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> R register</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mpi(x,y) make_pair(x,y)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pi pair<span class="meta-string">&lt;int,int&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">read</span><span class="params">(T &amp;x)</span></span>&#123;</span><br><span class="line">	x=<span class="number">0</span>;<span class="keyword">char</span> ch=getchar();<span class="keyword">bool</span> f=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(ch&lt;<span class="string">&#x27;0&#x27;</span>||ch&gt;<span class="string">&#x27;9&#x27;</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(ch==<span class="string">&#x27;-&#x27;</span>)f=<span class="number">1</span>;ch=getchar();</span><br><span class="line">	&#125;<span class="keyword">while</span>(ch&gt;=<span class="string">&#x27;0&#x27;</span>&amp;&amp;ch&lt;=<span class="string">&#x27;9&#x27;</span>)&#123;</span><br><span class="line">		x=(x&lt;&lt;<span class="number">1</span>)+(x&lt;&lt;<span class="number">3</span>)+ch-<span class="string">&#x27;0&#x27;</span>;ch=getchar();</span><br><span class="line">	&#125;x=f?-x:x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">2e5</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> M=<span class="number">4e5</span>+<span class="number">7</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Graph</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> head[N],to[M],nxt[M],tot;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">adde</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">		to[++tot]=v;nxt[tot]=head[u];head[u]=tot;</span><br><span class="line">		to[++tot]=u;nxt[tot]=head[v];head[v]=tot;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;G,T;</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="keyword">int</span> low[N],dfn[N],idx,bolnum;</span><br><span class="line"><span class="keyword">int</span> sta[N],top;</span><br><span class="line">ll siz[N],val[N];</span><br><span class="line">ll ans;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> fa)</span></span>&#123;</span><br><span class="line">	siz[u]=(u&lt;=n);ll tp=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=T.head[u];i;i=T.nxt[i])&#123;</span><br><span class="line">		<span class="keyword">int</span> v=T.to[i];<span class="keyword">if</span>(v==fa)<span class="keyword">continue</span>;</span><br><span class="line">		dfs(v,u);tp+=siz[v]*siz[u];</span><br><span class="line">		siz[u]+=siz[v];</span><br><span class="line">	&#125;tp+=siz[u]*(idx-siz[u]);</span><br><span class="line">	ans+=((tp*val[u])&lt;&lt;<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tarjan</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">	dfn[u]=low[u]=++idx;sta[++top]=u;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=G.head[u];i;i=G.nxt[i])&#123;</span><br><span class="line">		<span class="keyword">int</span> v=G.to[i];</span><br><span class="line">		<span class="keyword">if</span>(!dfn[v])&#123;</span><br><span class="line">			tarjan(v);low[u]=min(low[u],low[v]);</span><br><span class="line">			<span class="keyword">if</span>(low[v]==dfn[u])&#123;</span><br><span class="line">				++bolnum;val[bolnum]=<span class="number">1</span>;T.adde(bolnum,u);</span><br><span class="line">				<span class="keyword">int</span> x=<span class="number">0</span>;</span><br><span class="line">				<span class="keyword">do</span>&#123;</span><br><span class="line">					x=sta[top--];T.adde(x,bolnum);++val[bolnum];</span><br><span class="line">				&#125;<span class="keyword">while</span>(x!=v);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">else</span> low[u]=min(low[u],dfn[v]);</span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	read(n);read(m);bolnum=n;</span><br><span class="line">	fs(i,<span class="number">1</span>,m)&#123;</span><br><span class="line">		<span class="keyword">int</span> x,y;read(x);read(y);G.adde(x,y);</span><br><span class="line">	&#125;fs(i,<span class="number">1</span>,n)val[i]=<span class="number">-1</span>;</span><br><span class="line">	fs(i,<span class="number">1</span>,n)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!dfn[i])&#123;</span><br><span class="line">			idx=<span class="number">0</span>;</span><br><span class="line">			tarjan(i),--top;</span><br><span class="line">			dfs(i,<span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="comment">//	fs(i,1,bolnum)&#123;</span></span><br><span class="line"><span class="comment">//		printf(&quot;%d val:%lld siz:%lld :&quot;,i,val[i],siz[i]);</span></span><br><span class="line"><span class="comment">//		for(int j=T.head[i];j;j=T.nxt[j])cout&lt;&lt;T.to[j]&lt;&lt;&#x27; &#x27;;cout&lt;&lt;endl;</span></span><br><span class="line"><span class="comment">//	&#125;</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      <div>
+        
+      </div>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    <!--<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count"><%= wordcount(post.content) %>字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count"><%= min2read(post.content) %>分</span>
+      </span>
+    </span>
+</div>-->  
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/posts/16107/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -651,7 +757,7 @@ x=\pi =3.14159\lim_{\Delta x\rightarrow 0} \lim_{x\rightarrow a} \boldsymbol{\ta
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-05 14:38:44" itemprop="dateModified" datetime="2020-11-05T14:38:44+08:00">2020-11-05</time>
+                <time title="修改时间：2020-11-14 23:10:33" itemprop="dateModified" datetime="2020-11-14T23:10:33+08:00">2020-11-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -867,7 +973,7 @@ x=\pi =3.14159\lim_{\Delta x\rightarrow 0} \lim_{x\rightarrow a} \boldsymbol{\ta
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -988,7 +1094,7 @@ x=\pi =3.14159\lim_{\Delta x\rightarrow 0} \lim_{x\rightarrow a} \boldsymbol{\ta
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共2.8k字</span>
+  <span class="post-count">博客全站共4.1k字</span>
 </div>
 
         
